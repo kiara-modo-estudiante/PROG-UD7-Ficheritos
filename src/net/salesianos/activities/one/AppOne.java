@@ -22,9 +22,10 @@ public class AppOne {
         } while (userInput.length() < MIN_LENGTH);
 
         // c) Format the text: uppercase and replace spaces with underscores
+        String formattedText = userInput.toUpperCase().replace(" ", "_");
 
         // d) Save to file
-        FileManager.saveText(FILE_PATH, userInput);
+        FileManager.saveText(FILE_PATH, formattedText);
 
         System.out.println("Text saved to " + FILE_PATH);
 
