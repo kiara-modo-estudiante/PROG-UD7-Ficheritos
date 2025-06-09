@@ -1,5 +1,6 @@
 package net.salesianos.utils;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -19,5 +20,33 @@ public class FileManager {
         } catch (IOException e) {
             System.err.println("Error saving text: " + e.getMessage());
         }
+    }
+
+    /**
+     * Reads the content of a text file and returns its characters with their ASCII
+     * values. Each character is represented in the format
+     * "char_ASCII", and multiple characters are separated by a comma and a space.
+     *
+     * @param filePath The path to the text file to be read.
+     * @return A string containing the characters and their ASCII values, or an
+     *         error message
+     *         if an IOException occurs.
+     * @throws IOException If an error occurs while reading the file.
+     */
+    public static String readTextWithAscii(String filePath) {
+        StringBuilder output = new StringBuilder();
+        try (FileReader reader = new FileReader(filePath)) {
+            int character;
+
+            while ((character = reader.read()) != -1) {
+                if (output.length() > 0) {
+                    output.append(", ");
+                }
+                output.append((char) character).append("_").append(character);
+            }
+        } catch (IOException ioe) {
+            return "Error reading file: " + ioe.getMessage();
+        }
+        return output.toString();
     }
 }
