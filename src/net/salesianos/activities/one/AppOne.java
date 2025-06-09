@@ -19,6 +19,11 @@ public class AppOne {
             System.out.println("Please enter a text with at least " + MIN_LENGTH + " characters:");
             userInput = scanner.nextLine();
 
+            if (userInput.length() < MIN_LENGTH) {
+                int missing = MIN_LENGTH - userInput.length();
+                System.out.println("You need " + missing + " more characters");
+            }
+
         } while (userInput.length() < MIN_LENGTH);
 
         // c) Format the text: uppercase and replace spaces with underscores
