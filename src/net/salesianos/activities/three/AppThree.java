@@ -7,6 +7,9 @@ public class AppThree {
         final String FILE_PATH = "./files/three.txt";
 
         FileManager.mergeFilesContent(FILE_PATH, "./files/one.txt", "./files/two.txt");
+
+        FileManager.signFile(FILE_PATH, "\n--- File merged by Kiara Maldonado ---");
+
     }
 
 }
