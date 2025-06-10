@@ -11,6 +11,7 @@ public class AppFour {
 
     public static void main(String[] args) {
         TableManager tableManager = new TableManager();
+        tableManager.loadTablesFromFile(FILE_PATH);
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -31,12 +32,12 @@ public class AppFour {
                     scanner.nextLine();
 
                     Table newTable = new Table(color, legs);
-                    tableManager.saveTableToFile(newTable, FILE_PATH);
+                    tableManager.addTable(newTable, FILE_PATH);
                     System.out.println("Table saved successfully.");
                     break;
 
                 case 2:
-                    List<Table> tables = tableManager.getAllTablesFromFile(FILE_PATH);
+                    List<Table> tables = tableManager.getAllTables();
                     if (tables.isEmpty()) {
                         System.out.println("No tables saved.");
                     } else {
