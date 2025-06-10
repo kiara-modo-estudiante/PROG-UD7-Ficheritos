@@ -78,7 +78,6 @@ public class FileManager {
      * @param sourceFilePathOne The first source file to read.
      * @param sourceFilePathTwo The second source file to read.
      * 
-     * @throws IOException
      */
     public static void mergeFilesContent(String targetFilePath, String sourceFilePathOne, String sourceFilePathTwo) {
         FileManager.saveText(targetFilePath, "");
@@ -92,5 +91,16 @@ public class FileManager {
 
         FileManager.saveText(targetFilePath, mergedContent);
         System.out.println("Content merged and saved to " + targetFilePath);
+    }
+
+    /**
+     * Appends a signature at the end of the file.
+     * 
+     * @param filePath  The path to the file where the signature will be appended.
+     * @param signature The signature text to append.
+     */
+    public static void signFile(String filePath, String signature) {
+        saveText(filePath, "\n-- " + signature);
+        System.out.println("Signature appended to " + filePath);
     }
 }
